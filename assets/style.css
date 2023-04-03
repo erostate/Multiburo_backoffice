@@ -1,0 +1,664 @@
+/*
+    CSS Files
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+body {
+    background: rgb(93,109,133);
+    background: radial-gradient(circle, rgba(93,109,133,1) 0%, rgba(58,74,97,1) 100%);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.icon-svg {
+    fill: white;
+}
+
+.btn {
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    background: #374058;
+    color: white;
+    box-shadow: 2px 2px 5px black;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    transition: all 0.25s ease-in-out;
+}
+.btn:hover {
+    background: #2d3447;
+    box-shadow: 2px 2px 10px black;
+    transition: all 0.25s ease-in-out;
+}
+
+.btn-login {
+    margin-right: 10px;
+}
+.btn-home {
+    margin-left: 10px;
+}
+
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #3a4a61; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #374058;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2a3042;
+}
+
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(58,74,97,1); /* ou transparence à 0.50 */
+    height: 70px;
+}
+
+header h1 {
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+}
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(58,74,97,1);
+    margin-top: 100px;
+    height: 70px;
+}
+
+footer h1 {
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+}
+
+
+/* HERO SECTION */
+#hero-sect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hero-sect img {
+    height: calc(100vh - 70px);
+}
+#hero-sect h2 {
+    writing-mode: vertical-rl;
+}
+
+@media screen and (max-width: 1100px) {
+    #hero-sect img {
+        /* height: calc(100vh-70px); */
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    #hero-sect {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    #hero-sect h2 {
+        writing-mode: horizontal-tb;
+    }
+}
+@media screen and (max-width: 350px) {
+    #hero-sect h2 {
+        font-size: 120%;
+    }
+}
+
+
+/* PLAN SECTION */
+#plan-sect {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+#plan-sect div h1 {
+    text-align: center;
+    font-size: 180%;
+}
+
+#plan-sect select {
+    margin-bottom: 10px;
+    float: right;
+    font-family: 'Nunito', sans-serif;
+    background: #374058;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.pricing-header h2 {
+    font-size: 1.5em;
+    padding-top: 30px;
+    margin: 0;
+    color: white !important;
+}
+.pricing-header p {
+    color: #ADADAD;
+}
+.pricing-table .pricing-box input {
+    background: #A394FF;
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 0.85em;
+}
+.pricing-table .pricing-box .pricing-nbPlace p {
+    visibility: hidden;
+    margin-top: 5px;
+    color: red;
+    font-style: italic;
+    font-size: 0.85em;
+}
+.seeMore,
+.pricing-box {
+    transition: all ease-out 0.2s;
+}
+.seeMore {
+    cursor: pointer;
+    background: #A394FF;
+    color: black !important;
+    font-size: 2em;
+    font-weight: 600;
+    position: relative;
+    padding: 20px 10px;
+    display: block;
+}
+.pricing-box:nth-child(2) .seeMore {
+    background: #1BBC9D;
+}
+.pricing-box:nth-child(3) .seeMore {
+    background: #3498DB;
+}
+
+/* FDP A REPERER
+.pricing-box .seeMore:hover ~ .pricing-header {
+    background: #A394FF !important;
+    box-shadow: inset 0 0 100px 0 rgba(0, 0, 0, 0.3) !important;
+    transition: all ease-out 0.2s;
+}
+.pricing-box .seeMore:hover ~ .pricing-header p {
+    color: #595959 !important;
+    transition: all ease-out 0.2s;
+} */
+.pricing-box:hover .pricing-header {
+    background: #A394FF !important;
+    box-shadow: inset 0 0 100px 0 rgba(0, 0, 0, 0.3) !important;
+    transition: all ease-out 0.2s;
+}
+.pricing-box:nth-child(2):hover .pricing-header {
+    background: #1BBC9D !important;
+}
+.pricing-box:nth-child(3):hover .pricing-header {
+    background: #3498DB !important;
+}
+.pricing-box:hover .pricing-price {
+    color: #353535 !important;
+    transition: all ease-out 0.2s;
+}
+
+.pricing-table {
+    border-radius: 3px;
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    text-align: center;
+}
+.pricing-box {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.13);
+    background: #374058;
+    border: 2px solid rgba(10, 123, 183, 0.14);
+}
+.pricing-box:hover {
+    transform: scale(1.01);
+}
+.pricing-table ul {
+    color: #fff;
+    padding: 15px 60px;
+    text-align: left;
+}
+.pricing-table ul li {
+    display: flex;
+    padding: 3px 0;
+    list-style: none;
+}
+@media (max-width: 750px) {
+    .pricing-table {
+        grid-template-columns: 1fr;
+    }
+    .pricing-table > div:nth-child(3) {
+        grid-row-start: 1;
+    }
+    .pricing-table > div:nth-child(2) {
+        grid-row-start: 2;
+    }
+    .pricing-table > div {
+        align-self: top;
+    }
+}
+
+
+
+/* LOGIN SECTION */
+#login-sect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Input */
+.form-group {
+    vertical-align: middle;
+}
+.form-control {
+    position: relative;
+    margin: 20px 0 20px;
+    width: 190px;
+}
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+}
+/* .form-control input:invalid {
+    border-bottom: 2px red solid;
+} */
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    color: #fff;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+    color: lightblue;
+    transform: translateY(-30px);
+}
+
+/* Maybe
+#inpLogin label span:nth-child(1) {
+    transition-delay: 0ms;
+}
+#inpLogin label span:nth-child(2) {
+    transition-delay: 30ms;
+}
+#inpLogin label span:nth-child(3) {
+    transition-delay: 60ms;
+}
+#inpLogin label span:nth-child(4) {
+    transition-delay: 90ms;
+}
+#inpLogin label span:nth-child(5) {
+    transition-delay: 120ms;
+}
+*/
+
+/* Button Login */
+.btn_login {
+    cursor: pointer;
+    width: 145px;
+    height: 56px;
+    overflow: hidden;
+    border: none;
+    color: #fff;
+    background: none;
+    position: relative;
+    padding-bottom: 2em;
+}
+.btn_login > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.btn_login:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    background: currentColor;
+    transition: transform 0.25s ease-out;
+}
+.btn_login:hover:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.btn_login .clone > *,.btn_login .text > * {
+    opacity: 1;
+    font-size: 1.3rem;
+    transition: 0.2s;
+    margin-left: 4px;
+}
+.btn_login .clone > * {
+    transform: translateY(60px);
+}
+.btn_login:hover .clone > * {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.btn_login:hover .text > * {
+    opacity: 1;
+    transform: translateY(-60px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.btn_login:hover .clone > :nth-child(1) {
+    transition-delay: 0.15s;
+}
+.btn_login:hover .clone > :nth-child(2) {
+    transition-delay: 0.2s;
+}
+.btn_login:hover .clone > :nth-child(3) {
+    transition-delay: 0.25s;
+}
+.btn_login:hover .clone > :nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+
+/* PURCHASE SECTION */
+#purchase-sect {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+#purchase-sect form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#purchase-sect form input {
+    font-family: 'Nunito', sans-serif;
+    width: 40%;
+    padding: 10px;
+    border-radius: 0.3rem;
+    background: #374058;
+    color: white;
+    border: none;
+    outline: none;
+}
+#purchase-sect form button {
+    margin-top: 10px;
+}
+
+
+/* PUCHASE NEXT STEP SECTION */
+#purch-next-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#purch-next-step p {
+    margin-top: -20px;
+}
+#purch-next-step p:nth-child(3) {
+    margin-top: -10px;
+}
+#purch-next-step h3 span {
+    color: cyan;
+}
+#purch-next-step p span {
+    font-weight: bold;
+    /* text-decoration-line: underline; */
+}
+#purch-next-step p span:nth-child(2) {
+    color: magenta;
+}
+#purch-next-step #bodyExtras {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#purch-next-step #bodyExtras #fieldsetPc {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+}
+#purch-next-step #bodyExtras #fieldsetPc div {
+    display: flex;
+    flex-direction: row;
+}
+#purch-next-step #bodyExtras #fieldsetPc span {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+    color: #1BBC9D;
+    font-weight: bold;
+    font-size: 150%;
+    align-items: center;
+}
+#purch-next-step #bodyExtras #fieldsetPlPark {
+    grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    flex-direction: column;
+}
+#purch-next-step #bodyExtras #fieldsetPlPark div {
+    display: flex;
+    flex-direction: row;
+}
+#purch-next-step #bodyExtras #fieldsetPlPark span {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+    color: #1BBC9D;
+    font-weight: bold;
+    font-size: 150%;
+    align-items: center;
+}
+#purch-next-step #bodyExtras #infoExtras {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px;
+    color: #1BBC9D;
+    font-weight: bold;
+    font-size: 150%;
+}
+#purch-next-step #bodyExtras div button {
+    cursor: pointer;
+    background: none;
+    border: solid 1px cyan;
+    outline: none;
+    color: white;
+    font-size: 200%;
+    width: 50%;
+    transition: all 0.15s ease-in-out;
+}
+#purch-next-step #bodyExtras div button:hover {
+    background: cyan;
+    color: black;
+}
+#purch-next-step #bodyExtras input {
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0.3rem;
+    background: #374058;
+    color: white;
+    border: none;
+    outline: none;
+}
+#purch-next-step #bodyExtras button { 
+    margin-top: 10px;
+}
+#purch-next-step #orderSummary {
+    margin-top: 50px;
+    color: white;
+    background: #758499;
+    width: 50%;
+    border-radius: 0.3rem;
+}
+#purch-next-step #orderSummary h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#purch-next-step #orderSummary .body-order-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#purch-next-step #orderSummary .body-order-summary #aboutUser {
+    grid-area: 1 / 1 / 2 / 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#purch-next-step #orderSummary .body-order-summary #aboutReserv {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#purch-next-step #orderSummary .body-order-summary #aboutReserv div {
+    width: 80%;
+}
+#purch-next-step #orderSummary .body-order-summary h3 {
+    text-align: center;
+}
+#purch-next-step #orderSummary .body-order-summary li {
+    list-style: none;
+}
+#purch-next-step #orderSummary .body-order-summary li b {
+    text-decoration-line: underline;
+    font-weight: 900;
+}
+#purch-next-step #orderSummary .body-order-summary #aboutReserv span i {
+    color: #cbcbcb;
+}
+#purch-next-step #orderSummary .body-order-summary li span {
+    font-weight: 600;
+}
+#purch-next-step #goToNextStep {
+    margin-top: 50px;
+    width: 50%;
+}
+#purch-next-step #goToNextStep button[type="button"] {
+    float: left;
+}
+#purch-next-step #goToNextStep button[type="submit"] {
+    float: right;
+}
+
+
+/* YOUR PLAN SECTION */
+#my-plan-sect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#my-plan-sect .accordion-wrapper .accordion input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+#my-plan-sect .accordion-wrapper {
+    border-radius: 0.3rem;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+}
+#my-plan-sect .accordion-wrapper .accordion {
+    border: none;
+    background: #3A4A61;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+#my-plan-sect .accordion-wrapper .accordion:last-child {
+    margin-bottom: 0;
+}
+#my-plan-sect .accordion-wrapper .accordion label {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: #374058;
+    font-weight: 300;
+    font-size: 150%;
+    cursor: pointer;
+}
+#my-plan-sect .accordion-content {
+    max-height: 0;
+    padding: 0 16px;
+    transition: all 0.3s;
+}
+.accordion-content p{
+    margin: 0;
+    color: #23C8BC;
+    font-size: 18px;
+}
+#my-plan-sect input:checked ~ .accordion-content {
+    max-height: 100vh;
+}
+#my-plan-sect .accordion-content div {
+    float: left;
+}
+#my-plan-sect .accordion-content div:nth-child(2) {
+    float: right;
+}
+#my-plan-sect .accordion-content div h2:nth-child(2) {
+    font-weight: lighter;
+    margin-top: -20px;
+}
