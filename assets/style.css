@@ -613,65 +613,52 @@ footer h1 {
 }
 #my-plan-sect .accordion-wrapper {
     overflow: hidden;
-    /* box-shadow: 0 4px 0 -2px rgba(35, 200, 188, 0.5); */
-    border-bottom: solid 1px #00f8b9;
     width: 1000px;
     margin: 0 auto;
 }
-.accordion {
-    border: solid 1px #00f8b9;
+#my-plan-sect .accordion-wrapper .accordion {
     width: 100%;
     color: white;
+    background: #3A4A61;
     overflow: hidden;
     margin-bottom: 8px;
 }
-.accordion:last-child {
+#my-plan-sect .accordion-wrapper .accordion:last-child {
     margin-bottom: 0;
     border-bottom: none;
 }
-.accordion-label {
+#my-plan-sect .accordion-wrapper .accordion label {
     display: flex;
-    -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 16px;
-    background: none;
+    background: #374058;
     font-weight: 300;
     cursor: pointer;
     font-size: 20px;
 }
-.accordion-label:hover {
-    background: rgba(0, 248, 185, 0.15);
-}
-.accordion-label::after {
-    content: "+";
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-}
 .accordion-content {
     max-height: 0;
     padding: 0 16px;
-    font-weight: 400;
-    font-style: italic;
-    color: #00f8b9;
-    background: none;
-    -webkit-transition: all 0.3s;
+    color: white;
+    font-size: 150%;
     transition: all 0.3s;
+    display: flex;
+    justify-content: space-between;
 }
 .accordion-content p {
     margin: 0;
-    color: #00f8b9;
-    font-size: 18px;
-}
-input:checked + .accordion-label {
-    background: rgba(0, 248, 185, 0.15);
-}
-input:checked + .accordion-label::after {
-    transform: rotate(-45deg);
 }
 input:checked ~ .accordion-content {
     max-height: 100vh;
     padding: 16px;
+}
+.accordion-content span p:nth-child(1) {
+    font-weight: bold;
+}
+.accordion-content span:nth-child(2) {
+    text-align: right;
+}
+.accordion-content span:nth-child(2) p:nth-child(3) {
+    margin-top: 10px;
+    margin-bottom: -10px;
 }

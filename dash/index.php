@@ -32,36 +32,29 @@
         <div class="accordion-wrapper">
             <div class="accordion">
                 <input class="radio_faq" type="radio" name="radio-a" id="check1" checked>
-                <label class="accordion-label" for="check1">How do I purchase?</label>
+                <label class="accordion-label" for="check1">Votre abonnement</label>
                 <div class="accordion-content">
-                    <div>
-                        <h2>Mensuel</h2>
-                        <h2>20/04/2023</h2>
-                    </div>
-                    <div>
-                        <h2>400€/mois</h2>
-                    </div>
+                    <span>
+                        <p>Mensuel</p>
+                        <p>02/05/2023</p>
+                    </span>
+                    <span>
+                        <p>100€/mois</p>
+                    </span>
                 </div>
             </div>
             <div class="accordion">
                 <input class="radio_faq" type="radio" name="radio-a" id="check2">
-                <label class="accordion-label" for="check2">How do I reach out to get support?</label>
+                <label class="accordion-label" for="check2">Votre organisation</label>
                 <div class="accordion-content">
-                    <p>We would love to count you within our community members, feel free to <a style="text-decoration-line: underline;" target="_blank" href="https://bs-scripts.space/">join our Discord</a>.</p>
-                </div>
-            </div>
-            <div class="accordion">
-                <input class="radio_faq" type="radio" name="radio-a" id="check3">
-                <label class="accordion-label" for="check3">How much time is needed for my server to be whitelisted?</label>
-                <div class="accordion-content">
-                    <p>You don't have to do anything for your server to be whitelisted. Granting access to your server is automated and instant.</p>
-                </div>
-            </div>
-            <div class="accordion">
-                <input class="radio_faq" type="radio" name="radio-a" id="check4">
-                <label class="accordion-label" for="check4">Do I need a specific FiveM server version to run it properly?</label>
-                <div class="accordion-content">
-                    <p>We highly recommend you to update your server build to 4793+ to avoid crashes. We are using new features from Cfx.re, which work smoothly on the latest server artifacts.</p>
+                    <span>
+                        <p>IGICOM</p>
+                    </span>
+                    <span>
+                        <p>12 route de Marenne</p>
+                        <p><b>69360</b></p>
+                        <p>06 55 55 55 55</p>
+                    </span>
                 </div>
             </div>
         </div>
