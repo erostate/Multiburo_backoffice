@@ -139,4 +139,166 @@
 
         return $tmp;
     }
+
+
+    // OBTENIR LA LISTE DES RESERVATIONS SOUS FORME D'ACCORDEON
+    function listReservAccor($pdo) {
+        $stmt = $pdo->prepare('SELECT R.res_id, R.date, TR.label AS "labelTypeRess", RS.type_ress AS "codeTypeRess", RS.label AS "ress", RS.nb_place, RS.serial_number FROM reservation R
+            INNER JOIN line_reservation LR ON R.res_id = LR.reserv
+            INNER JOIN ressource RS ON LR.ress = RS.ress_id
+            INNER JOIN type_ress TR ON RS.type_ress = TR.type_code
+            WHERE R.users = :bind_usersid ORDER BY R.date, RS.type_ress');
+        $stmt->bindParam(':bind_usersid', $_SESSION['users']['id'], PDO::PARAM_INT, 5);
+        $stmt->execute();
+
+        $tmp = "";
+        $result = $stmt->fetchAll();
+        if ($stmt->rowCount() != 0) {
+            foreach ($result as $data) {
+                $tmpRess = "";
+                foreach ($result as $dataRess) {
+                    if ($dataRess['date'] == $data['date']) {
+                        if ($dataRess['codeTypeRess'] == "PC") {
+                            $ressLabel = $dataRess['ress'];
+                            $serialNum = $dataRess['serial_number'];
+                            $tmpRess .= "
+                                <span>
+                                    <p>Ordinateur: $ressLabel</p>
+                                    <p>$serialNum</p>
+                                </span>
+                            ";
+                        } elseif ($dataRess['codeTypeRess'] == "PK") {
+                            $ressLabel = $dataRess['ress'];
+                            $tmpRess .= "
+                                <span>
+                                    <p>Stationnement</p>
+                                    <p>Place $ressLabel</p>
+                                </span>
+                            ";
+                        }
+                    }
+                }
+                if ($data['codeTypeRess'] == "BI" OR $data['codeTypeRess'] == "OS" OR $data['codeTypeRess'] == "MR") {
+                    $resId = $data['res_id'];
+                    $date = date('d/m/Y', strtotime($data['date']));
+                    $labelTypeRess = $data['labelTypeRess'];
+                    $ressLabel = $data['ress'];
+                    $nbPlace = $data['nb_place'];
+                    $tmp .= "
+                        <div class=\"accordion\">
+                            <input type=\"radio\" name=\"radio-b\" id=\"accorReserv$resId\">
+                            <label for=\"accorReserv$resId\">$date</label>
+                            <div class=\"accordion-content-reserv\">
+                                <div>
+                                    <span>
+                                        <p>$labelTypeRess</p>
+                                        <p>Bureau $ressLabel</p>
+                                    </span>
+                                    <span>
+                                        <p>$nbPlace place</p>
+                                    </span>
+                                </div>
+                                <fieldset>
+                                    <legend>Ressource</legend>
+                                    $tmpRess
+                                </fieldset>
+                                <button class=\"btn\" onclick=\"alert('flemme mais tien l\'id: $resId');\">Détail</button>
+                            </div>
+                        </div>
+                    ";
+                }
+            }
+        } else {
+            $tmp .= "<h3 id=\"error\">Aucune réservation</h3>";
+        }
+
+        return $tmp;
+    }
+
+
+    // OBTENIR LES INFOS DE SON ABONNEMENT
+    function infoMySub($pdo) {
+        $stmt = $pdo->prepare('SELECT S.label, S.price, HS.date FROM subscription S
+            INNER JOIN history_sub HS ON S.sub_id = HS.sub
+            WHERE HS.users = :bind_usersid');
+        $stmt->bindParam(':bind_usersid', $_SESSION['users']['id'], PDO::PARAM_INT, 5);
+        $stmt->execute();
+
+        $tmp = "";
+        $result = $stmt->fetch();
+        if ($stmt->rowCount() != 0) {
+            $label = $result['label'];
+            $date = date('d/m/Y', strtotime($result['date']));
+            $price = $result['price'].'€';
+            $tmp .= "
+                <span>
+                    <p>$label</p>
+                    <p>$date</p>
+                </span>
+                <span>
+                    <p>$price/mois</p>
+                </span>
+            ";
+        } else {
+            $tmp .= "
+                <p id=\"error\">Aucune abonnement actif</p>
+                <button id=\"subMe\" class=\"btn\">S'abonner</button>
+            ";
+        }
+
+        return $tmp;
+    }
+
+
+    // OBTENIR LES INFOS DE SON ABONNEMENT
+    function infoMyOrga($pdo) {
+        $stmt = $pdo->prepare('SELECT O.rs_org AS "rs", O.cp, O.address, O.phone FROM organisation O
+            INNER JOIN users U ON O.org_id = U.orga
+            WHERE U.users_id = :bind_usersid');
+        $stmt->bindParam(':bind_usersid', $_SESSION['users']['id'], PDO::PARAM_INT, 5);
+        $stmt->execute();
+
+        $tmp = "";
+        $result = $stmt->fetch();
+        if ($stmt->rowCount() != 0) {
+            $rs = $result['rs'];
+            $cp = $result['cp'];
+            $address = $result['address'];
+            $phone = implode(".", str_split($result['phone'], 2));
+            $tmp .= "
+                <span>
+                    <p>$rs</p>
+                </span>
+                <span>
+                    <p>$address</p>
+                    <p><b>$cp</b></p>
+                    <p>$phone</p>
+                </span>
+            ";
+        } else {
+            $tmp .= "
+                <p id=\"error\">Aucune abonnement actif</p>
+                <button id=\"subMe\" class=\"btn\">S'abonner</button>
+            ";
+        }
+
+        return $tmp;
+    }
+
+
+    // SAVOIR SI UN UTILISATEUR EST SUB
+    function usersIsSub($pdo) {
+        $stmt = $pdo->prepare('SELECT COUNT(*) FROM subscription S
+            INNER JOIN history_sub HS ON S.sub_id = HS.sub
+            WHERE HS.users = :bind_usersid');
+        $stmt->bindParam(':bind_usersid', $_SESSION['users']['id'], PDO::PARAM_INT, 5);
+        $stmt->execute();
+
+        $result = $stmt->fetchColumn();
+        if ($result == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 ?>

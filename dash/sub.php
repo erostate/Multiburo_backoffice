@@ -36,8 +36,8 @@
             $da = $_GET['da'];
         
         
-        if (usersIsSub($pdo) == false) {
-            header('Location: sub.php');
+        if (usersIsSub($pdo) == true) {
+            header('Location: ../index.php#plan-sect');
         }
     ?>
     <!-- HEADER -->
@@ -47,24 +47,17 @@
         <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout.php'">Se déconnecter</button>
     </header>
 
-    <!-- PURCHASE -->
-    <section id="purchase-sect">
-        <h2>Indiquez la journée souhaitée</h2>
-        <form action="../inc/backend/dateDispo.php" method="POST">
-            <?php
-                if (isset($_GET['da']) && isset($_SESSION['reserv']['date'])) {
-                    if ($_GET['da'] != "none")
-                        echo '<input type="date" name="dateReserv" value="'.$_SESSION['reserv']['date'].'" id="">';
-                    else
-                        echo '<input type="date" name="dateReserv" id="">';
-                }
-                else
-                    echo '<input type="date" name="dateReserv" id="">';
-            ?>
-            <input type="hidden" name="r" value="<?= $_GET['r']; ?>">
-            <input type="hidden" name="sb" value="<?= $_GET['sb']; ?>">
-            <input type="hidden" name="nbp" value="<?= $_GET['nbp']; ?>">
-            <button class="btn" type="submit">Vérifier la disponibilité</button>
+    <!-- SUB -->
+    <section id="sub-sect">
+        <h2>Vous de disposez pas d'abonnement</h2>
+        <form action="../inc/backend/sub.php" method="POST">
+            <select class="inp" name="typeSub" onchange="changeTypeSub(this);">
+                <option disabled selected>Choisir le type d'abonnement</option>
+                <option value="day">Journalier</option>
+                <option value="week">Hebdomadaire</option>
+                <option value="month">Mensuel</option>
+            </select>
+            <div id="confirmSub"></div>
         </form>
     </section>
 

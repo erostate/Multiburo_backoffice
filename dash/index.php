@@ -31,32 +31,39 @@
         <h1>Votre plan</h1>
         <div class="accordion-wrapper">
             <div class="accordion">
-                <input class="radio_faq" type="radio" name="radio-a" id="check1" checked>
-                <label class="accordion-label" for="check1">Votre abonnement</label>
+                <input type="radio" name="radio-a" id="accorSub" checked>
+                <label for="accorSub">Votre abonnement</label>
                 <div class="accordion-content">
-                    <span>
-                        <p>Mensuel</p>
-                        <p>02/05/2023</p>
-                    </span>
-                    <span>
-                        <p>100€/mois</p>
-                    </span>
+                    <?php
+                        echo infoMySub($pdo);
+                    ?>
                 </div>
             </div>
             <div class="accordion">
-                <input class="radio_faq" type="radio" name="radio-a" id="check2">
-                <label class="accordion-label" for="check2">Votre organisation</label>
+                <input type="radio" name="radio-a" id="accorOrg">
+                <label for="accorOrg">Votre organisation</label>
                 <div class="accordion-content">
-                    <span>
-                        <p>IGICOM</p>
-                    </span>
-                    <span>
-                        <p>12 route de Marenne</p>
-                        <p><b>69360</b></p>
-                        <p>06 55 55 55 55</p>
-                    </span>
+                    <?php
+                        echo infoMyOrga($pdo);
+                    ?>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- YOUR RESERVATION -->
+    <section id="reserv-sect">
+        <div class="accordion-header-reserv">
+            <span>
+                <h1>Vos réservations</h1>
+                <p>Cliquer pour plus d'infos</p>
+            </span>
+            <a href="../index.php#plan-sect">Nouvelle réservation</a>
+        </div>
+        <div class="accordion-wrapper">
+            <?php
+                echo listReservAccor($pdo);
+            ?>
         </div>
     </section>
 

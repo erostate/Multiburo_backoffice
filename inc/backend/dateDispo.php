@@ -36,6 +36,18 @@
     $nbTotal = $countRess->fetchColumn();
     if ($stmt->rowCount() == $nbTotal) {
         header('Location: ../../dash/purchase.php?r='.$r.'&sb='.$sb.'&nbp='.$nbp.'&da=none');
+    } elseif ($stmt->rowCount() == 0) {
+        // Récupérer un ID de ressource parmi les disponible
+        $ressAv = $pdo->prepare('SELECT ress_id FROM ressource RS WHERE nb_place = :bind_nbplace AND type_ress = :bind_typeress');
+        $ressAv->bindParam(':bind_nbplace', $nbp, PDO::PARAM_INT, 2);
+        $ressAv->bindParam(':bind_typeress', $r, PDO::PARAM_STR, 2);
+        $ressAv->execute();
+        $resultLoc = $ressAv->fetch();
+
+        $_SESSION['reserv']['date'] = $dateReserv;
+        $_SESSION['reserv']['room'] = $resultLoc['ress_id'];
+        $ressAvailable = $nbTotal - $stmt->rowCount();
+        header('Location: ../../dash/purchase.php?r='.$r.'&sb='.$sb.'&nbp='.$nbp.'&da='.$ressAvailable);
     } else {
         // Récupérer un ID de ressource parmi les disponible
         $ressAv = $pdo->prepare('SELECT ress_id FROM ressource RS WHERE nb_place = :bind_nbplace AND type_ress = :bind_typeress AND ress_id <> :bind_ressid');

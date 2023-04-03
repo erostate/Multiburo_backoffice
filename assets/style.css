@@ -16,6 +16,7 @@ body {
     fill: white;
 }
 
+/* BTN */
 .btn {
     cursor: pointer;
     font-family: 'Nunito', sans-serif;
@@ -30,6 +31,25 @@ body {
 }
 .btn:hover {
     background: #2d3447;
+    box-shadow: 2px 2px 10px black;
+    transition: all 0.25s ease-in-out;
+}
+
+/* BTN INVERSED COLOR */
+.btn-inversed-color {
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    background: #3A4A61;
+    color: white;
+    box-shadow: 2px 2px 5px black;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    transition: all 0.25s ease-in-out;
+}
+.btn-inversed-color:hover {
+    background: rgb(56, 63, 83);
     box-shadow: 2px 2px 10px black;
     transition: all 0.25s ease-in-out;
 }
@@ -451,6 +471,9 @@ footer h1 {
 #purch-next-step p:nth-child(3) {
     margin-top: -10px;
 }
+#purch-next-step #error {
+    color: rgb(255, 38, 0);
+}
 #purch-next-step h3 span {
     color: cyan;
 }
@@ -602,63 +625,178 @@ footer h1 {
 }
 
 
-/* YOUR PLAN SECTION */
+/* YOUR PLAN SECTION || YOUR RESERVATION SECTION */
 #my-plan-sect > h1 {
     text-align: center;
 }
-#my-plan-sect .accordion-wrapper .accordion input[type="radio"] {
+#reserv-sect .accordion-header-reserv {
+    display: flex;
+    justify-content: space-between;
+}
+#reserv-sect .accordion-header-reserv span {
+    margin-left: 15%;
+}
+#reserv-sect .accordion-header-reserv span > p {
+    margin-top: -15px;
+    font-style: italic;
+}
+#reserv-sect .accordion-header-reserv a {
+    margin-right: 15%;
+    margin-bottom: 10px;
+    align-self: flex-end;
+    font-size: 120%;
+    text-decoration-line: none;
+    cursor: pointer;
+    background: #374058;
+    color: white;
+    box-shadow: 2px 2px 5px black;
+    padding: 12px 24px;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    transition: all 0.25s ease-in-out;
+}
+#reserv-sect .accordion-header-reserv a:hover {
+    
+    background: #2d3447;
+    transition: all 0.25s ease-in-out;
+}
+#my-plan-sect .accordion-wrapper .accordion input[type="radio"],
+#reserv-sect .accordion-wrapper .accordion input[type="radio"] {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
-#my-plan-sect .accordion-wrapper {
+#my-plan-sect .accordion-wrapper,
+#reserv-sect .accordion-wrapper {
     overflow: hidden;
-    width: 1000px;
+    width: 70%;
     margin: 0 auto;
 }
-#my-plan-sect .accordion-wrapper .accordion {
+#my-plan-sect .accordion-wrapper .accordion,
+#reserv-sect .accordion-wrapper .accordion {
     width: 100%;
     color: white;
     background: #3A4A61;
     overflow: hidden;
     margin-bottom: 8px;
 }
-#my-plan-sect .accordion-wrapper .accordion:last-child {
+#my-plan-sect .accordion-wrapper .accordion:last-child,
+#reserv-sect .accordion-wrapper .accordion:last-child {
     margin-bottom: 0;
     border-bottom: none;
 }
-#my-plan-sect .accordion-wrapper .accordion label {
+#my-plan-sect .accordion-wrapper .accordion label,
+#reserv-sect .accordion-wrapper .accordion label {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 16px;
     background: #374058;
     font-weight: 300;
     cursor: pointer;
     font-size: 20px;
 }
-.accordion-content {
+#reserv-sect .accordion-wrapper .accordion label {
+    font-weight: bold;
+}
+.accordion-content,
+.accordion-content-reserv {
     max-height: 0;
     padding: 0 16px;
     color: white;
     font-size: 150%;
     transition: all 0.3s;
+}
+.accordion-content,
+.accordion-content-reserv div {
     display: flex;
     justify-content: space-between;
 }
-.accordion-content p {
+.accordion-content p,
+.accordion-content-reserv p {
     margin: 0;
 }
-input:checked ~ .accordion-content {
+.accordion-wrapper #error {
+    color: rgb(255, 38, 0);
+    font-style: italic;
+}
+input:checked ~ .accordion-content,
+input:checked ~ .accordion-content-reserv {
     max-height: 100vh;
     padding: 16px;
 }
-.accordion-content span p:nth-child(1) {
+.accordion-content span p:nth-child(1),
+.accordion-content-reserv span p {
     font-weight: bold;
 }
-.accordion-content span:nth-child(2) {
+.accordion-content span:nth-child(2),
+.accordion-content-reserv span:nth-child(2) {
     text-align: right;
 }
 .accordion-content span:nth-child(2) p:nth-child(3) {
     margin-top: 10px;
     margin-bottom: -10px;
+}
+
+#reserv-sect {
+    margin-top: 100px;
+}
+#reserv-sect .accordion-wrapper #error {
+    color: rgb(255, 38, 0);
+    font-style: italic;
+}
+.accordion-content-reserv fieldset {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.accordion-content-reserv fieldset legend {
+    font-size: 80%;
+}
+.accordion-content-reserv fieldset span {
+    text-align: center;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+.accordion-content-reserv fieldset span p {
+    font-weight: normal;
+    font-size: 80%;
+}
+.accordion-content-reserv > button {
+    margin-top: 10px;
+}
+
+
+/* SUB SECTION */
+#sub-sect {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+#sub-sect form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#sub-sect form select {
+    font-family: 'Nunito', sans-serif;
+    width: 40%;
+    padding: 10px;
+    border-radius: 0.3rem;
+    background: #374058;
+    color: white;
+    border: none;
+    outline: none;
+}
+#sub-sect form p {
+    margin-top: 50px;
+}
+#sub-sect form #confirmSub {
+    text-align: center;
+}
+#sub-sect form button:nth-child(1) {
+    margin-right: 10px;
 }

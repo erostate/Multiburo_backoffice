@@ -92,3 +92,43 @@ function editExtras2(type, act) {
         }
     }
 }
+
+
+// CHANGEMENT DU TYPE D'ABONNEMENT (S'ABONNER)
+function changeTypeSub(sel) {
+    if (sel.value == "day") {
+        typeSub = "Journalier";
+    } else if (sel.value == "week") {
+        typeSub = "Hebdomadaire";
+    } else {
+        typeSub = "Mensuel";
+    }
+
+    confirmSub = document.getElementById('confirmSub');
+
+    // Balise P : Message de confirmation
+    msgConfirm = document.createElement('p');
+    msgConfirm.innerText = "Vous êtes sur le point de vous abonnez de manière " + typeSub + ", êtes vous sûr ?";
+    confirmSub.appendChild(msgConfirm);
+
+    // Balise DIV : Container des buttons
+    containerBtn = document.createElement('div');
+    confirmSub.appendChild(containerBtn);
+
+    // Balise BUTTON : Button YES
+    btnYes = document.createElement('button');
+    btnYes.classList.add("btn");
+    btnYes.type = "submit";
+    btnYes.innerText = "Oui";
+    containerBtn.appendChild(btnYes);
+
+    // Balise BUTTON : Button NO
+    btnNo = document.createElement('button');
+    btnNo.classList.add("btn");
+    btnNo.type = "button";
+    btnNo.innerText = "Non";
+    btnNo.onclick = function() {
+        window.location.href='../index.php#plan-sect';
+    }
+    containerBtn.appendChild(btnNo);
+}
