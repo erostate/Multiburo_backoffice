@@ -34,7 +34,13 @@
                 <input class="radio_faq" type="radio" name="radio-a" id="check1" checked>
                 <label class="accordion-label" for="check1">How do I purchase?</label>
                 <div class="accordion-content">
-                    <p>Your payment will go through Tebex, who is the official FiveM partner when it comes to buying assets. After your purchase, you will be able to download your files instantly.</p>
+                    <div>
+                        <h2>Mensuel</h2>
+                        <h2>20/04/2023</h2>
+                    </div>
+                    <div>
+                        <h2>400€/mois</h2>
+                    </div>
                 </div>
             </div>
             <div class="accordion">

@@ -603,62 +603,75 @@ footer h1 {
 
 
 /* YOUR PLAN SECTION */
-#my-plan-sect {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#my-plan-sect > h1 {
+    text-align: center;
 }
-#my-plan-sect .accordion-wrapper .accordion input {
+#my-plan-sect .accordion-wrapper .accordion input[type="radio"] {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
 #my-plan-sect .accordion-wrapper {
-    border-radius: 0.3rem;
     overflow: hidden;
-    width: 80%;
+    /* box-shadow: 0 4px 0 -2px rgba(35, 200, 188, 0.5); */
+    border-bottom: solid 1px #00f8b9;
+    width: 1000px;
     margin: 0 auto;
 }
-#my-plan-sect .accordion-wrapper .accordion {
-    border: none;
-    background: #3A4A61;
+.accordion {
+    border: solid 1px #00f8b9;
     width: 100%;
     color: white;
     overflow: hidden;
     margin-bottom: 8px;
 }
-#my-plan-sect .accordion-wrapper .accordion:last-child {
+.accordion:last-child {
     margin-bottom: 0;
+    border-bottom: none;
 }
-#my-plan-sect .accordion-wrapper .accordion label {
+.accordion-label {
     display: flex;
+    -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 16px;
-    background: #374058;
+    background: none;
     font-weight: 300;
-    font-size: 150%;
     cursor: pointer;
+    font-size: 20px;
 }
-#my-plan-sect .accordion-content {
-    max-height: 0;
-    padding: 0 16px;
+.accordion-label:hover {
+    background: rgba(0, 248, 185, 0.15);
+}
+.accordion-label::after {
+    content: "+";
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
-.accordion-content p{
+.accordion-content {
+    max-height: 0;
+    padding: 0 16px;
+    font-weight: 400;
+    font-style: italic;
+    color: #00f8b9;
+    background: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.accordion-content p {
     margin: 0;
-    color: #23C8BC;
+    color: #00f8b9;
     font-size: 18px;
 }
-#my-plan-sect input:checked ~ .accordion-content {
+input:checked + .accordion-label {
+    background: rgba(0, 248, 185, 0.15);
+}
+input:checked + .accordion-label::after {
+    transform: rotate(-45deg);
+}
+input:checked ~ .accordion-content {
     max-height: 100vh;
-}
-#my-plan-sect .accordion-content div {
-    float: left;
-}
-#my-plan-sect .accordion-content div:nth-child(2) {
-    float: right;
-}
-#my-plan-sect .accordion-content div h2:nth-child(2) {
-    font-weight: lighter;
-    margin-top: -20px;
+    padding: 16px;
 }
