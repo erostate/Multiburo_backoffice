@@ -91,7 +91,11 @@
                     else
                         echo "<span class=\"seeMore\" onclick=\"window.location.href='login.php'\">En savoir plus</span>";
                 ?>
-                <!-- <p class="description">peut être utiliser ce machin</p> -->
+                <div class="pricing-nbPlace">
+                    <label for="nbPlaceBurCol">Nombre de place voulu<span>*</span></label>
+                    <input id="nbPlaceBurCol" onkeyup="checkNbPlaceCorrect(this, 'OS');" type="number" min="1" max="10" value="1" name="" id="">
+                    <p id="errorNbPlaceBurCol">Le nombre de place doit être compris entre 1 et 10</p>
+                </div>
                 <ul>
                     <li>
                         <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -120,14 +124,18 @@
                     else
                         echo "<span class=\"seeMore\" onclick=\"window.location.href='login.php'\">En savoir plus</span>";
                 ?>
-                <!-- <p class="description">peut être utiliser ce machin</p> -->
+                <div class="pricing-nbPlace">
+                    <label for="nbPlaceSalReu">Nombre de place voulu<span>*</span></label>
+                    <input id="nbPlaceSalReu" onkeyup="checkNbPlaceCorrect(this, 'MR');" type="number" min="10" max="30" value="10" name="" id="">
+                    <p id="errorNbPlaceSalReu">Le nombre de place doit être compris entre 10 et 30</p>
+                </div>
                 <ul>
                     <li>
                         <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                             <path fill="none" d="M0 0h24v24H0z"/>
                             <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
                         </svg>
-                        Pas de limite de nombre de personne
+                        Salle avec beaucoup de place
                     </li>
                     <li>
                         <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">

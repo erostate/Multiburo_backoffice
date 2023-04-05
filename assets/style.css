@@ -185,13 +185,21 @@ footer h1 {
     color: #ADADAD;
 }
 .pricing-table .pricing-box input {
-    background: #A394FF;
     border: none;
     outline: none;
     border-radius: 0.2rem;
     padding: 5px;
     margin-top: 20px;
     font-size: 0.85em;
+}
+#nbPlaceBurInd {
+    background: #A394FF;
+}
+#nbPlaceBurCol {
+    background: #1BBC9D;
+}
+#nbPlaceSalReu {
+    background: #3498DB;
 }
 .pricing-table .pricing-box .pricing-nbPlace p {
     visibility: hidden;

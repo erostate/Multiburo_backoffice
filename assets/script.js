@@ -24,17 +24,34 @@ function changeSortPlan(sel) {
 function buyPlan(ress) {
     sortBy = document.getElementById('sortBy');
     ress = ress.toUpperCase();
-    if (ress == "BI") {
-        nbPlace = document.getElementById('nbPlaceBurInd');
-        errorNbPlace = document.getElementById('errorNbPlaceBurInd');
-    }
+    if (ress == "MR") {
+        nbPlace = document.getElementById('nbPlaceSalReu');
+        errorNbPlace = document.getElementById('errorNbPlaceSalReu');
 
-    if (nbPlace.value <= 10 && nbPlace.value >= 1) {
-        window.location.href='dash/purchase.php?r='+ress+'&sb='+sortBy.value+'&nbp='+nbPlace.value;
-    } else {
-        nbPlace.value = 1;
-        if (ress == "BI") {
+        if (nbPlace.value <= 30 && nbPlace.value >= 10) {
+            window.location.href='dash/purchase.php?r='+ress+'&sb='+sortBy.value+'&nbp='+nbPlace.value;
+        } else {
+            nbPlace.value = 10;
             errorNbPlace.setAttribute('style', 'visibility: visible;');
+        }
+    } else {
+        if (ress == "BI") {
+            nbPlace = document.getElementById('nbPlaceBurInd');
+            errorNbPlace = document.getElementById('errorNbPlaceBurInd');
+        } else if (ress == "OS") {
+            nbPlace = document.getElementById('nbPlaceBurCol');
+            errorNbPlace = document.getElementById('errorNbPlaceBurCol');
+        }
+    
+        if (nbPlace.value <= 10 && nbPlace.value >= 1) {
+            window.location.href='dash/purchase.php?r='+ress+'&sb='+sortBy.value+'&nbp='+nbPlace.value;
+        } else {
+            nbPlace.value = 1;
+            if (ress == "BI") {
+                errorNbPlace.setAttribute('style', 'visibility: visible;');
+            } else if (ress == "OS") {
+                errorNbPlace.setAttribute('style', 'visibility: visible;');
+            }
         }
     }
 }
@@ -42,10 +59,29 @@ function buyPlan(ress) {
 
 // CHECK QUE LE NOMBRE DE PLACE EST ENTRE 1 ET 10
 function checkNbPlaceCorrect(word, plan) {
-    if (word.value > 10) {
-        word.value = 10;
-        if (plan == "BI") {
-            document.getElementById('errorNbPlaceBurInd').setAttribute('style', 'visibility: visible;');
+    if (plan == "MR") {
+        if (word.value > 30) {
+            word.value = 30;
+            document.getElementById('errorNbPlaceSalReu').setAttribute('style', 'visibility: visible;');
+        } else if (word.value < 10) {
+            document.getElementById('errorNbPlaceSalReu').setAttribute('style', 'visibility: visible;');
+        } else {
+            document.getElementById('errorNbPlaceSalReu').setAttribute('style', 'visibility: hidden;');
+        }
+    } else {
+        if (word.value > 10) {
+            word.value = 10;
+            if (plan == "BI") {
+                document.getElementById('errorNbPlaceBurInd').setAttribute('style', 'visibility: visible;');
+            } else if (plan == "OS") {
+                document.getElementById('errorNbPlaceBurCol').setAttribute('style', 'visibility: visible;');
+            }
+        } else {
+            if (plan == "BI") {
+                document.getElementById('errorNbPlaceBurInd').setAttribute('style', 'visibility: hidden;');
+            } else if (plan == "OS") {
+                document.getElementById('errorNbPlaceBurCol').setAttribute('style', 'visibility: hidden;');
+            }
         }
     }
 }
