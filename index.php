@@ -21,11 +21,11 @@
         <?php
             if (!isset($_SESSION['users']['id'])) {
                 echo "<h1>MULTIBURO</h1>";
-                echo "<button class=\"btn btn-login\" onclick=\"window.location.href='login.php'\">Se connecter</button>";
+                echo "<button class=\"btn btn-login\" onclick=\"window.location.href='login'\">Se connecter</button>";
             } else {
-                echo "<button class=\"btn btn-home\" onclick=\"window.location.href='dash/'\">Panel</button>";
+                echo "<button class=\"btn btn-home\" onclick=\"window.location.href='dash/index'\">Panel</button>";
                 echo "<h1>MULTIBURO</h1>";
-                echo "<button class=\"btn btn-login\" onclick=\"window.location.href='inc/backend/logout.php'\">Se déconnecter</button>";
+                echo "<button class=\"btn btn-login\" onclick=\"window.location.href='inc/backend/logout'\">Se déconnecter</button>";
             }
         ?>
     </header>
@@ -56,7 +56,7 @@
                     if (isset($_SESSION['users']['id']))
                         echo "<span class=\"seeMore\" onclick=\"buyPlan('BI');\">En savoir plus</span>";
                     else
-                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login.php'\">En savoir plus</span>";
+                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login'\">En savoir plus</span>";
                 ?>
                 <div class="pricing-nbPlace">
                     <label for="nbPlaceBurInd">Nombre de place voulu<span>*</span></label>
@@ -89,7 +89,7 @@
                     if (isset($_SESSION['users']['id']))
                         echo "<span class=\"seeMore\" onclick=\"buyPlan('OS');\">En savoir plus</span>";
                     else
-                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login.php'\">En savoir plus</span>";
+                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login'\">En savoir plus</span>";
                 ?>
                 <div class="pricing-nbPlace">
                     <label for="nbPlaceBurCol">Nombre de place voulu<span>*</span></label>
@@ -122,7 +122,7 @@
                     if (isset($_SESSION['users']['id']))
                         echo "<span class=\"seeMore\" onclick=\"buyPlan('MR');\">En savoir plus</span>";
                     else
-                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login.php'\">En savoir plus</span>";
+                        echo "<span class=\"seeMore\" onclick=\"window.location.href='login'\">En savoir plus</span>";
                 ?>
                 <div class="pricing-nbPlace">
                     <label for="nbPlaceSalReu">Nombre de place voulu<span>*</span></label>

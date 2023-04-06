@@ -13,9 +13,9 @@
 
         if ($dataUser = $stmt->fetch()) {
             $_SESSION['users']['id'] = $dataUser['users_id'];
-            header('Location: ../../index.php');
+            header('Location: ../../index');
         } else {
-            header('Location: ../../login.php?r=register');
+            header('Location: ../../login?r=register');
         }
     }
 ?>

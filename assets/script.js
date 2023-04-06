@@ -87,84 +87,114 @@ function checkNbPlaceCorrect(word, plan) {
 }
 
 
-// CHANGER LES EXTRAS
-function editExtras2(type, act) {
-    nbExtrasPc = document.getElementById('nbExtrasPc');
-    inpExtrasPc = document.getElementById('inpExtrasPc');
-    nbExtrasPlPark = document.getElementById('nbExtrasPlPark');
-    inpExtrasPlPark = document.getElementById('inpExtrasPlPark');
-
-    // Si c'est un PC
-    if (type == "pc") {
-        // Si "ajouter" sinon "retirer"
-        if (act == "add") {
-            // Ne pas choisir plus de ressource que disponible
-            if (inpExtrasPc.value < inpExtrasPc.max) {
-                nbExtrasPc.innerHTML = Number(inpExtrasPc.value) + 1;
-                inpExtrasPc.value = Number(inpExtrasPc.value) + 1;
-            }
-        } else {
-            // Ne pas descendre en dessous de 0
-            if (inpExtrasPc.value > 0) {
-                nbExtrasPc.innerHTML = Number(inpExtrasPc.value) - 1;
-                inpExtrasPc.value = Number(inpExtrasPc.value) - 1;
-            }
-        }
-    // Sinon (Place de parking)
-    } else {
-        // Si "ajouter" sinon "retirer"
-        if (act == "add") {
-            // Ne pas choisir plus de ressource que disponible
-            if (inpExtrasPlPark.value < inpExtrasPlPark.max) {
-                nbExtrasPlPark.innerHTML = Number(inpExtrasPlPark.value) + 1;
-                inpExtrasPlPark.value = Number(inpExtrasPlPark.value) + 1;
-            }
-        } else {
-            // Ne pas descendre en dessous de 0
-            if (inpExtrasPlPark.value > 0) {
-                nbExtrasPlPark.innerHTML = Number(inpExtrasPlPark.value) - 1;
-                inpExtrasPlPark.value = Number(inpExtrasPlPark.value) - 1;
-            }
-        }
-    }
-}
-
-
 // CHANGEMENT DU TYPE D'ABONNEMENT (S'ABONNER)
-function changeTypeSub(sel) {
+function changeTypeSub(plan, sel) {
     if (sel.value == "day") {
         typeSub = "Journalier";
+        txtPeriodAdd = "jour";
+        minPeriodAdd = 1;
+        maxPeriodAdd = 31;
     } else if (sel.value == "week") {
         typeSub = "Hebdomadaire";
+        txtPeriodAdd = "semaine";
+        minPeriodAdd = 1;
+        maxPeriodAdd = 4;
     } else {
         typeSub = "Mensuel";
+        txtPeriodAdd = "mois";
+        minPeriodAdd = 1;
+        maxPeriodAdd = 12;
     }
 
     confirmSub = document.getElementById('confirmSub');
 
-    // Balise P : Message de confirmation
-    msgConfirm = document.createElement('p');
-    msgConfirm.innerText = "Vous êtes sur le point de vous abonnez de manière " + typeSub + ", êtes vous sûr ?";
-    confirmSub.appendChild(msgConfirm);
-
-    // Balise DIV : Container des buttons
-    containerBtn = document.createElement('div');
-    confirmSub.appendChild(containerBtn);
-
-    // Balise BUTTON : Button YES
-    btnYes = document.createElement('button');
-    btnYes.classList.add("btn");
-    btnYes.type = "submit";
-    btnYes.innerText = "Oui";
-    containerBtn.appendChild(btnYes);
-
-    // Balise BUTTON : Button NO
-    btnNo = document.createElement('button');
-    btnNo.classList.add("btn");
-    btnNo.type = "button";
-    btnNo.innerText = "Non";
-    btnNo.onclick = function() {
-        window.location.href='../index.php#plan-sect';
+    while (confirmSub.firstChild) {
+        confirmSub.removeChild(confirmSub.firstChild);
     }
-    containerBtn.appendChild(btnNo);
+
+    if (plan == "new") {
+        // Balise P : Message de confirmation
+        msgConfirm = document.createElement('p');
+        msgConfirm.innerText = "Vous êtes sur le point de vous abonnez de manière " + typeSub + ", êtes vous sûr ?";
+        confirmSub.appendChild(msgConfirm);
+        
+        // Balise INPUT : Que faire?
+        inpWhatDo = document.createElement('input');
+        inpWhatDo.type = "hidden";
+        inpWhatDo.name = "whatDo";
+        inpWhatDo.value = "old";
+        confirmSub.appendChild(inpWhatDo);
+
+        // Balise DIV : Container des buttons
+        containerBtn = document.createElement('div');
+        confirmSub.appendChild(containerBtn);
+
+        // Balise BUTTON : Button YES
+        btnYes = document.createElement('button');
+        btnYes.classList.add("btn");
+        btnYes.type = "submit";
+        btnYes.innerText = "Oui";
+        containerBtn.appendChild(btnYes);
+
+        // Balise BUTTON : Button NO
+        btnNo = document.createElement('button');
+        btnNo.classList.add("btn");
+        btnNo.type = "button";
+        btnNo.innerText = "Non";
+        btnNo.onclick = function() {
+            window.location.href='../index.php#plan-sect';
+        }
+        containerBtn.appendChild(btnNo);
+    } else {
+        // Balise LABEL : Période à rajouter
+        labelPeriodAdd = document.createElement('label');
+        labelPeriodAdd.for = "inpPeriodAdd";
+        labelPeriodAdd.innerText = "Nombre de " + txtPeriodAdd + " à augmenter";
+        labelPeriodAdd.setAttribute('style', 'margin-right: 10px;');
+        confirmSub.appendChild(labelPeriodAdd);
+        // Balise INPUT : Période à rajouter
+        inpPeriodAdd = document.createElement('input');
+        inpPeriodAdd.type = "number";
+        inpPeriodAdd.setAttribute('style', 'margin-top: 10px; color: white;');
+        inpPeriodAdd.name = "periodAdd";
+        inpPeriodAdd.value = 1;
+        inpPeriodAdd.id = "inpPeriodAdd";
+        inpPeriodAdd.placeholder = "Nombre de " + txtPeriodAdd + " à augmenter";
+        inpPeriodAdd.min = minPeriodAdd;
+        inpPeriodAdd.max = maxPeriodAdd;
+        confirmSub.appendChild(inpPeriodAdd);
+
+        // Balise P : Message de confirmation
+        msgConfirm = document.createElement('p');
+        msgConfirm.innerText = "Vous êtes sur le point de migrer votre abonnement en " + typeSub + ", êtes vous sûr ?";
+        confirmSub.appendChild(msgConfirm);
+        
+        // Balise INPUT : Que faire?
+        inpWhatDo = document.createElement('input');
+        inpWhatDo.type = "hidden";
+        inpWhatDo.name = "whatDo";
+        inpWhatDo.value = "old";
+        confirmSub.appendChild(inpWhatDo);
+
+        // Balise DIV : Container des buttons
+        containerBtn = document.createElement('div');
+        confirmSub.appendChild(containerBtn);
+
+        // Balise BUTTON : Button YES
+        btnYes = document.createElement('button');
+        btnYes.classList.add("btn");
+        btnYes.type = "submit";
+        btnYes.innerText = "Oui";
+        containerBtn.appendChild(btnYes);
+
+        // Balise BUTTON : Button NO
+        btnNo = document.createElement('button');
+        btnNo.classList.add("btn");
+        btnNo.type = "button";
+        btnNo.innerText = "Non";
+        btnNo.onclick = function() {
+            window.location.href='../index.php#plan-sect';
+        }
+        containerBtn.appendChild(btnNo);
+    }
 }

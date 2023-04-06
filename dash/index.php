@@ -21,9 +21,9 @@
 <body>
     <!-- HEADER -->
     <header>
-        <button class="btn btn-home" onclick="window.location.href='../index.php'">Accueil</button>
+        <button class="btn btn-home" onclick="window.location.href='../index'">Accueil</button>
         <h1>MULTIBURO</h1>
-        <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout.php'">Se déconnecter</button>
+        <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout'">Se déconnecter</button>
     </header>
 
     <!-- YOUR PLAN -->
@@ -58,7 +58,7 @@
                 <h1>Vos réservations</h1>
                 <p>Cliquer pour plus d'infos</p>
             </span>
-            <a href="../index.php#plan-sect">Nouvelle réservation</a>
+            <a href="../index#plan-sect">Nouvelle réservation</a>
         </div>
         <div class="accordion-wrapper">
             <?php

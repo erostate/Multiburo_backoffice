@@ -7,8 +7,9 @@
 </head>
 <body>
     <?php
-        $date = "2023-05-02";
-        echo date('d/m/Y', strtotime($date));
+        $periodAdd = 2;
+        $typeSub = "month";
+        echo date('Y-m-d', strtotime('+'.$periodAdd.' '.$typeSub));
     ?>
 </body>
 </html>

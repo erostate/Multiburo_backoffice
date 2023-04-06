@@ -56,5 +56,5 @@
 
     // echo "Count PC -> ".count($_SESSION['reserv']['listExtrasPc']);
     // echo "Count PK -> ".count($_SESSION['reserv']['listExtrasPlPark']);
-    header('Location: ../../dash/index.php');
+    header('Location: ../../dash/index');
 ?>

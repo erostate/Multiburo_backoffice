@@ -34,17 +34,12 @@
         
         if (isset($_GET['da']))
             $da = $_GET['da'];
-        
-        
-        if (usersIsSub($pdo) == false) {
-            header('Location: sub.php');
-        }
     ?>
     <!-- HEADER -->
     <header>
-        <button class="btn btn-home" onclick="window.location.href='../index.php'">Accueil</button>
+        <button class="btn btn-home" onclick="window.location.href='../index'">Accueil</button>
         <h1>MULTIBURO</h1>
-        <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout.php'">Se déconnecter</button>
+        <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout'">Se déconnecter</button>
     </header>
 
     <!-- PURCHASE -->
@@ -77,6 +72,16 @@
                     echo "
                         <h3 id=\"error\">Aucune ressource n'est disponible pour votre date</h3>
                         <p><i>Essayez peut-être une autre date</i></p>
+                    ";
+                } elseif ($da == "noSub") {
+                    echo "
+                        <h3 id=\"error\">Vous n'êtes pas abonné pour cette période</h3>
+                        <p><a style=\"color: orange;\" href=\"sub\">Abonnez vous</a></p>
+                    ";
+                } elseif ($da == "noPSub") {
+                    echo "
+                        <h3 id=\"error\">Vous ne pouvez pas faire de réservation pour cette période</h3>
+                        <p><i>Essayez une autre date</i></p>
                     ";
                 } else {
                     $maxPcAv = returnMaxExtraAvailable('PC', $_SESSION['reserv']['date'], $pdo);
@@ -134,7 +139,7 @@
                             <form action=\"../inc/backend/createReserv.php\" method=\"POST\">
                                 <input type=\"hidden\" name=\"ress\" value=\"".$_SESSION['reserv']['room']."\">
                                 <input type=\"hidden\" name=\"date\" value=\"".$_SESSION['reserv']['date']."\">
-                                <button type=\"button\" onclick=\"window.location.href='../index.php'\" class=\"btn\">Annuler</button>
+                                <button type=\"button\" onclick=\"window.location.href='../index'\" class=\"btn\">Annuler</button>
                                 <button type=\"submit\" class=\"btn\">Valider</button>
                             </form>
                         </div>

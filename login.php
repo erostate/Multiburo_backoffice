@@ -22,7 +22,7 @@
 <body>
     <!-- HEADER -->
     <header>
-        <button class="btn btn-home" onclick="window.location.href='index.php'">Accueil</button>
+        <button class="btn btn-home" onclick="window.location.href='index'">Accueil</button>
         <h1>MULTIBURO</h1>
     </header>
 
