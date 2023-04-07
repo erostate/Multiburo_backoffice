@@ -32,7 +32,26 @@
         <div class="accordion-wrapper">
             <div class="accordion">
                 <input type="radio" name="radio-a" id="accorSub" checked>
-                <label for="accorSub">Votre abonnement</label>
+                <?php
+                    if (usersIsSub($pdo) == true) {
+                        echo "
+                        <label for=\"accorSub\">
+                            Votre abonnement
+                            <span>
+                                <button class=\"btn-inversed-color\" onclick=\"window.location.href='sub'\">Prolonger</button>
+                                <button class=\"btn-inversed-color\" onclick=\"window.location.href='../inc/backend/sub.php?leave=true'\">Annuler</button>
+                            <span>
+                        </label>
+                        ";
+                    } else {
+                        echo "
+                        <label for=\"accorSub\">
+                            Votre abonnement
+                            <button class=\"btn-inversed-color\" onclick=\"window.location.href='sub'\">S'abonner</button>
+                        </label>
+                        ";
+                    }
+                ?>
                 <div class="accordion-content">
                     <?php
                         echo infoMySub($pdo);

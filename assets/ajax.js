@@ -58,6 +58,7 @@ $(document).ready(function(){
         }
     });
 
+    // CHOISIR LES ID DES PLACE DE PARKING DEMANDÉ
     $('button[name="editExtrasPlPark"]').click(function() {
         var dateReserv = $('input[name="dateReserv"]').val();
         var maxExtrasPlPark = $('#inpExtrasPlPark').attr('max');

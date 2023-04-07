@@ -122,7 +122,7 @@ function changeTypeSub(plan, sel) {
         inpWhatDo = document.createElement('input');
         inpWhatDo.type = "hidden";
         inpWhatDo.name = "whatDo";
-        inpWhatDo.value = "old";
+        inpWhatDo.value = "new";
         confirmSub.appendChild(inpWhatDo);
 
         // Balise DIV : Container des buttons

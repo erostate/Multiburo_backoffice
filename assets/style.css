@@ -738,6 +738,12 @@ input:checked ~ .accordion-content-reserv {
 .accordion-content-reserv span p {
     font-weight: bold;
 }
+.accordion-content span:nth-child(1) p:nth-child(2) {
+    margin-left: 5px;
+    font-size: 70%;
+    font-weight: lighter;
+    font-style: italic;
+}
 .accordion-content span:nth-child(2),
 .accordion-content-reserv span:nth-child(2) {
     text-align: right;
@@ -788,6 +794,16 @@ input:checked ~ .accordion-content-reserv {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+#sub-sect .actionDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#sub-sect .actionDiv span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #sub-sect form select {
     font-family: 'Nunito', sans-serif;

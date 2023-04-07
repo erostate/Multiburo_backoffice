@@ -218,7 +218,7 @@
 
     // OBTENIR LES INFOS DE SON ABONNEMENT
     function infoMySub($pdo) {
-        $stmt = $pdo->prepare('SELECT S.label, S.price, HS.date FROM subscription S
+        $stmt = $pdo->prepare('SELECT S.label, S.price, HS.date, S.duration FROM subscription S
             INNER JOIN history_sub HS ON S.sub_id = HS.sub
             WHERE HS.users = :bind_usersid');
         $stmt->bindParam(':bind_usersid', $_SESSION['users']['id'], PDO::PARAM_INT, 5);
@@ -230,19 +230,32 @@
             $label = $result['label'];
             $date = date('d/m/Y', strtotime($result['date']));
             $price = $result['price'].'€';
+            if ($result['label'] == "Journalier") {
+                $duree = $result['duration']." jour(s)";
+                $dateEnd = date('d/m/Y', strtotime($result['date']." +".$result['duration']."day"));
+            } elseif ($result['label'] == "Hebdomadaire") {
+                $duree = $result['duration']." semaine(s)";
+                $dateEnd = date('d/m/Y', strtotime($result['date']." +".$result['duration']."week"));
+            } else {
+                $duree = $result['duration']." mois";
+                $dateEnd = date('d/m/Y', strtotime($result['date']." +".$result['duration']."month"));
+            }
             $tmp .= "
                 <span>
                     <p>$label</p>
-                    <p>$date</p>
+                    <p>
+                        Durée de $duree<br>
+                        Fin : $dateEnd
+                    </p>
                 </span>
                 <span>
                     <p>$price/mois</p>
+                    <p>$date</p>
                 </span>
             ";
         } else {
             $tmp .= "
-                <p id=\"error\">Aucune abonnement actif</p>
-                <button id=\"subMe\" class=\"btn\">S'abonner</button>
+                <p id=\"error\">Aucun abonnement actif</p>
             ";
         }
 
@@ -277,8 +290,8 @@
             ";
         } else {
             $tmp .= "
-                <p id=\"error\">Aucune abonnement actif</p>
-                <button id=\"subMe\" class=\"btn\">S'abonner</button>
+                <p id=\"error\">Aucune organisation active</p>
+                <p>Error: Contactez le support</p>
             ";
         }
 

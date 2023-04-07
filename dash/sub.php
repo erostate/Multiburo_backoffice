@@ -37,7 +37,7 @@
     ?>
     <!-- HEADER -->
     <header>
-        <button class="btn btn-home" onclick="window.location.href='../index'">Accueil</button>
+        <button class="btn btn-home" onclick="window.location.href='index'">Panel</button>
         <h1>MULTIBURO</h1>
         <button class="btn btn-login" onclick="window.location.href='../inc/backend/logout'">Se déconnecter</button>
     </header>
@@ -47,10 +47,20 @@
         if (usersIsSub($pdo) == true) {
             echo "
                 <section id=\"sub-sect\">
-                    <h2>Souhaitez vous prolonger votre abonnement ?</h2>
+                    <h2>Que voulez vous faire ?</h2>
                     <form action=\"../inc/backend/sub.php\" method=\"POST\">
+                        <div class=\"actionDiv\">
+                            <span>
+                                <input id=\"idChangeFormule\" type=\"radio\" name=\"act\" value=\"changeFormule\">
+                                <label for=\"idChangeFormule\">Changer la formule</label>
+                            </span>
+                            <span>
+                                <input id=\"idProlongSub\" type=\"radio\" name=\"act\" value=\"prolongSub\">
+                                <label for=\"idChangeFormule\">Prolonger votre abonnement</label>
+                            </span>
+                        </div>
                         <select class=\"inp\" name=\"typeSub\" onchange=\"changeTypeSub('old', this);\">
-                            <option disabled selected>Choisir la durée du prolongement</option>
+                            <option disabled selected>Paiement par ...</option>
                             <option value=\"day\">Jour</option>
                             <option value=\"week\">Semaine</option>
                             <option value=\"month\">Mois</option>
