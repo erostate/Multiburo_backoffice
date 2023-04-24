@@ -31,6 +31,9 @@
         if (isset($_POST['periodAdd']))
             $periodAdd = $_POST['periodAdd'];
         
+        if (isset($_POST['act']))
+            $act = $_POST['act'];
+        
         
         if ($typeSub == "day") {
             $labelTypeSub = "Journalier";
@@ -68,8 +71,13 @@
 
             $subId = $resISub['sub_id'];
             $durActu = $resISub['duration'];
-
-            $newDur = $durActu + $periodAdd;
+            
+            // Action à effectuer
+            if ($act == "changeFormule") {
+                $newDur = $periodAdd;
+            } elseif ($act == "prolongSub") {
+                $newDur = $durActu + $periodAdd;
+            }
             
             // UPDATE Subscription
             $stmt = $pdo->prepare('UPDATE subscription SET label = :bind_label, duration = :bind_duration WHERE sub_id = :bind_subid');

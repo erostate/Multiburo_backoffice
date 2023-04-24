@@ -38,7 +38,7 @@
                         <label for=\"accorSub\">
                             Votre abonnement
                             <span>
-                                <button class=\"btn-inversed-color\" onclick=\"window.location.href='sub'\">Prolonger</button>
+                                <button class=\"btn-inversed-color\" onclick=\"window.location.href='sub'\">Modifier</button>
                                 <button class=\"btn-inversed-color\" onclick=\"window.location.href='../inc/backend/sub.php?leave=true'\">Annuler</button>
                             <span>
                         </label>
